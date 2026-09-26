@@ -13,23 +13,18 @@ builder.Services.AddScoped<DbExecutor>(provider =>
     return new DbExecutor(connectionString);
 });
 
-// Add services to the container.
-
-//builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
-builder.Services.AddDbContext<DatabaseService>(options =>
-                          options.UseSqlServer(connectionString));
-
+builder.Services.AddDbContext<DatabaseService>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
 builder.Services.AddScoped<ICandidateService, CandidateService>();
 
-
 var app = builder.Build();
+
+#region Endpoints
 
 app.MapGet("/api/candidate/get", async (string UserId, ICandidateService candidateService) =>
 {
@@ -50,19 +45,19 @@ app.MapPut("/api/candidate/update", async (Candidate.Domain.Model.Candidate cand
     return result;
 });
 
-
 app.MapDelete("/api/candidate/{id}", async (Guid id, ICandidateService candidateService) =>
 {
     var result = await candidateService.DeleteCandidateProfile(id);
     return result;
 });
 
+#endregion
+
 if (app.Environment.IsDevelopment())
 {
     DbInitializer.Run(connectionString);
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

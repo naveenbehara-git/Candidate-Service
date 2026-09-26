@@ -17,6 +17,7 @@ namespace Candidate.Application.Services
         {
             _candidateRepository = candidateRepository;
         }
+
         public async Task<Candidate.Domain.Model.Candidate> GetCandidateProfileById(Guid userId)
         {
             return await _candidateRepository.GetCandidateProfileById(userId);

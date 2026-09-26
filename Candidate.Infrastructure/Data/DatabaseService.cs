@@ -25,6 +25,12 @@ namespace Candidate.Infrastructure.Data
 
             //custom model configuration for CandidateProfile entity
             modelBuilder.Entity(CandidateConfiguration.Configuration);
+            modelBuilder.Entity(WorkExpConfigueation.Configuration);
+            modelBuilder.Entity(EducationConfiguration.Configuration);
+            modelBuilder.Entity(SkillConfiguration.Configuration);
+            modelBuilder.Entity(AddressConfiguration.Configuration);
+            modelBuilder.Entity(LanguageConfiguration.Configuration);
+
         }
 
         public void Save()
