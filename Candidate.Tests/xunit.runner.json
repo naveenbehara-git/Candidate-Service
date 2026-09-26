@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <!-- XUnit Configuration for Candidate.Tests Project -->
+
+  <!-- Test Execution Settings -->
+  <xunit>
+    <!-- Enable parallel test execution where possible -->
+    <parallelizeAssembly enabled="true" />
+    <!-- Disable parallel collection execution for database tests -->
+    <parallelizeTestCollections enabled="false" />
+    <!-- Timeout for individual tests (in seconds) -->
+    <longRunningTestSeconds value="10" />
+  </xunit>
+
+  <!-- Test Output Settings -->
+  <appSettings>
+    <!-- Enable detailed logging -->
+    <add key="TestLogging:Enabled" value="true" />
+    <!-- Log level: Debug, Information, Warning, Error -->
+    <add key="TestLogging:Level" value="Information" />
+    <!-- Include timestamps in test output -->
+    <add key="TestLogging:IncludeTimestamps" value="true" />
+  </appSettings>
+
+  <!-- Database Test Settings -->
+  <databaseTests>
+    <!-- Connection string for integration tests (if needed) -->
+    <connectionString value="Server=localhost;Database=CandidateTestDb;User Id=sa;Password=Test@123;" />
+    <!-- Whether to recreate database for each test -->
+    <recreateDatabase value="false" />
+    <!-- Whether to use in-memory database -->
+    <useInMemoryDatabase value="true" />
+  </databaseTests>
+
+  <!-- Mock Settings -->
+  <mocks>
+    <!-- Verify all mock setups were called -->
+    <verifyAllSetups value="true" />
+    <!-- Strict mock behavior (throw on unexpected calls) -->
+    <strictBehavior value="false" />
+  </mocks>
+
+  <!-- Test Data Settings -->
+  <testData>
+    <!-- Seed value for random test data generation -->
+    <randomSeed value="42" />
+    <!-- Default number of test records to create -->
+    <defaultRecordCount value="5" />
+    <!-- Use factory pattern for test data -->
+    <useFactory value="true" />
+  </testData>
+
+  <!-- Retry Settings -->
+  <retry>
+    <!-- Enable test retry on failure -->
+    <enabled value="false" />
+    <!-- Number of retries -->
+    <maxAttempts value="2" />
+    <!-- Initial delay in milliseconds -->
+    <initialDelayMs value="100" />
+    <!-- Enable exponential backoff -->
+    <exponentialBackoff value="true" />
+  </retry>
+
+  <!-- Coverage Settings -->
+  <coverage>
+    <!-- Minimum coverage percentage -->
+    <minimumCoverage value="90" />
+    <!-- Coverage targets per namespace -->
+    <namespaceTargets>
+      <namespace name="Candidate.Infrastructure.Repositories" minimumCoverage="95" />
+      <namespace name="Candidate.Application.Services" minimumCoverage="95" />
+      <namespace name="Candidate.Domain.Model" minimumCoverage="80" />
+    </namespaceTargets>
+    <!-- Files to exclude from coverage -->
+    <excludePatterns>
+      <pattern>*.Generated.cs</pattern>
+      <pattern>*Test*.cs</pattern>
+      <pattern>*TestData*.cs</pattern>
+    </excludePatterns>
+  </coverage>
+
+  <!-- CI/CD Settings -->
+  <cicd>
+    <!-- Enable CI mode (stricter checks) -->
+    <enabled value="false" />
+    <!-- Fail build on test failure -->
+    <failOnTestFailure value="true" />
+    <!-- Fail build on coverage below minimum -->
+    <failOnLowCoverage value="true" />
+    <!-- Generate detailed reports -->
+    <generateDetailedReports value="true" />
+  </cicd>
+
+  <!-- Logging Configuration -->
+  <logging>
+    <logger type="Console">
+      <level value="Information" />
+      <showThreadId value="true" />
+      <showTimestamp value="true" />
+    </logger>
+    <logger type="File">
+      <level value="Debug" />
+      <filePath value="TestResults/test-execution.log" />
+      <maxFileSizeKb value="10000" />
+    </logger>
+  </logging>
+
+</configuration>
