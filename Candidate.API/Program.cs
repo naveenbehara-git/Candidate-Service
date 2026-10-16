@@ -53,10 +53,8 @@ app.MapDelete("/api/candidate/{id}", async (Guid id, ICandidateService candidate
 
 #endregion
 
-if (app.Environment.IsDevelopment())
-{
-    DbInitializer.Run(connectionString);
-}
+DbInitializer.Run(connectionString);
+
 
 if (app.Environment.IsDevelopment())
 {
