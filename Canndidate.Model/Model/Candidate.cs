@@ -16,13 +16,14 @@ namespace Candidate.Domain.Model
         public Gender Gender { get; set; }
         public DateTime DOB { get; set; }
         public List<Address> Address { get; set; }
+        public string CareerObjective { get; set; }
         public string MaritalStatus { get; set; }
+        public List<WorkExperience> Experiences { get; set; } = new List<WorkExperience>();
+        public List<Education> Educations { get; set; } = new List<Education>();
+        public List<Skill> Skills { get; set; } = new List<Skill>();
         public List<Language> Languages { get; set; } = new List<Language>();
-        public List<Education> Educations { get; set; }
-        public List<WorkExperience> Experiences { get; set; }
-        public List<Skill> Skills { get; set; }
+        public string? ImagePath { get; set; }
         public string Certifications { get; set; }
-
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

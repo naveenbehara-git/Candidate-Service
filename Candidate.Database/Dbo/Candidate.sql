@@ -2,7 +2,7 @@ IF OBJECT_ID('dbo.Candidate', 'U') IS NULL
 BEGIN
     CREATE TABLE [dbo].[Candidate]
     (
-        CandidateId INT NOT NULL CONSTRAINT PK_Candidate PRIMARY KEY IDENTITY(1,1),
+        CandidateId INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_Candidate PRIMARY KEY,
 
         UserId UNIQUEIDENTIFIER NOT NULL,
 
@@ -18,9 +18,13 @@ BEGIN
 
         DOB DATETIME2 NULL,
 
+        CareerObjective NVARCHAR(MAX) NULL,
+
         MaritalStatus VARCHAR(15) NULL,
 
         Certifications NVARCHAR(MAX) NULL,
+
+        ImagePath NVARCHAR(MAX) NULL,
 
         CreatedAt DATETIME2 NOT NULL CONSTRAINT DF_Candidate_CreatedAt DEFAULT SYSUTCDATETIME(),
 
