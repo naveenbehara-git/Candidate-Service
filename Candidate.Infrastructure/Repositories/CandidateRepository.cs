@@ -174,6 +174,9 @@ namespace Candidate.Infrastructure.Repositories
                 existingCandidate.MaritalStatus = candidateUpdate.MaritalStatus ?? existingCandidate.MaritalStatus;
                 existingCandidate.Certifications = candidateUpdate.Certifications ?? existingCandidate.Certifications;
                 existingCandidate.UpdatedAt = DateTime.UtcNow;
+                existingCandidate.CareerObjective = candidateUpdate.CareerObjective;
+                existingCandidate.CreatedAt = DateTime.UtcNow;
+                existingCandidate.ImagePath = candidateUpdate.ImagePath ?? existingCandidate.ImagePath;
 
                 // Update Addresses - Remove old and add new
                 if (existingCandidate.Address != null && existingCandidate.Address.Count > 0)
